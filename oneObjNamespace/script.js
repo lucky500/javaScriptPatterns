@@ -1,4 +1,6 @@
-var o {
+// Namespace / Object Literal Pattern
+
+var o  = {
 	leadself: 'Me: ',
 	leadcomputer: "PC: ",
 	aSaid: ["This is a Cyber Chat"],
@@ -10,25 +12,25 @@ var o {
 								"She laughed, and the desert sang.",
 								"You’ve got about as much charm as a dead slug."],
 	talk: function (msg){
-		echo(leadself + msg);
+		this.echo(this.leadself + msg);
 	},
 	replyYesNo: function (){
-		var msg = Math.random() > .5 ? msgYes : msgNo;
-		echo(leadcomputer + msg);
+		var msg = Math.random() > .5 ? this.msgYes : this.msgNo;
+		this.echo(this.leadcomputer + msg);
 	},
 	saySassyStuff: function (){
-		var msg = aSassyStuff[ Math.floor(Math.random() * aSassyStuff.length) ];
-		echo(leadcomputer + msg);
+		var msg = this.aSassyStuff[ Math.floor(Math.random() * this.aSassyStuff.length) ];
+		this.echo(this.leadcomputer + msg);
 	},
 		echo: function (msg){
-		aSaid.push("<div>" + msg + "</div>");
+		this.aSaid.push("<div>" + msg + "</div>");
 
-		var aSaidLength = aSaid.length,
+		var aSaidLength = this.aSaid.length,
 				start = Math.max(aSaidLength - 6, 0),
 				out = "";
 
 		for(var i = start; i < aSaidLength; i++){
-			out += aSaid[i];
+			out += this.aSaid[i];
 		}
 
 		$('.advert').html(out);
